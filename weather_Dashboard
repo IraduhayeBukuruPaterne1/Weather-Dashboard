@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <h1>Weather Dashboard</h1>
+    <input type="text" id="cityInput" placeholder="Enter city name">
+    <button id="searchButton">Search</button>
+    <div id="weatherInfo"></div>
+
+    <script>
+        const apiKey = 'f82984cb6762f838c1eca8e386e0e11d';
+
+        const searchButton = document.getElementById('searchButton');
+        const cityInput = document.getElementById('cityInput');
+        const weatherInfo = document.getElementById('weatherInfo');
+
+        searchButton.addEventListener('click', () => {
+            const city = cityInput.value;
+            if (city) {
+                fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Process and display weather data here
+                        // Update weatherInfo.innerHTML with relevant data
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+            }
+        });
+    </script>
+</body>
+</html>
